@@ -2,12 +2,15 @@
 //     return <li><button>{children}</button></li>
 // };
 
-export default function TabButton({ label, onSelect }) {
+export default function TabButton({ label, onSelect, isSelected }) {
     // document.querySelector('button').addEventListener('click', () => {
     // });
+
+    console.log("TabButton Component executing");
+
     return (
         <li>
-            <button onClick={onSelect}>{label}</button>
+            <button className={isSelected && 'active'} onClick={onSelect}>{label}</button>
         </li>
     )
 };
