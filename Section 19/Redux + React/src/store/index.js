@@ -1,9 +1,9 @@
-import { createStore } from "redux";
-import { createSlice } from "@reduxjs/toolkit";
+// import { createStore } from "redux";
+import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initialState = { counter: 0, showCounter: true };
 
-createSlice({
+const counterSlice = createSlice({
  name: "counter",
  initialState,
   reducers: {
@@ -14,7 +14,7 @@ createSlice({
       state.counter--;
     },
     increase(state, action) {
-      state.counter = state.counter + action.payload;
+      state.counter += action.payload;
     },
     toggle(state) {
       state.showCounter = !state.showCounter;
@@ -22,26 +22,35 @@ createSlice({
   },
 })
 
-export const INCREMENT = "increment"
-export const DECREMENT = "decrement"
-export const INCREASE = "increase"
-export const TOGGLE = "TOGGLE"
+// export const INCREMENT = "increment"
+// export const DECREMENT = "decrement"
+// export const INCREASE = "increase"
+// export const TOGGLE = "TOGGLE"
 
-const counterReducer = ( state = initialState,  action ) => {
-  switch (action.type) {
-    case INCREMENT:
-      return { ...state, counter: state.counter + 1 };
-    case DECREMENT:
-      return { ...state, counter: state.counter - 1 };
-    case INCREASE:
-      return { ...state, counter: state.counter + action.amount };
-    case TOGGLE:
-      return { ...state, showCounter: !state.showCounter };
-    default:
-      return state;
-  }
-};
+// const counterReducer = ( state = initialState,  action ) => {
+//   switch (action.type) {
+//     case INCREMENT:
+//       return { ...state, counter: state.counter + 1 };
+//     case DECREMENT:
+//       return { ...state, counter: state.counter - 1 };
+//     case INCREASE:
+//       return { ...state, counter: state.counter + action.amount };
+//     case TOGGLE:
+//       return { ...state, showCounter: !state.showCounter };
+//     default:
+//       return state;
+//   }
+// };
+//
+// const store = createStore(counterReducer);
+// const store = createStore(counterSlice.reducer);
 
-const store = createStore(counterReducer);
+const store = configureStore({
+  reducer: counterSlice.reducer
+});
+
+
+// This is the Action Creator function: it returns an object with a type property
+export const counterActions = counterSlice.actions;
 
 export default store;
