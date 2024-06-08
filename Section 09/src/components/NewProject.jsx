@@ -11,13 +11,12 @@ export default function NewProject({ onAdd, onCancel }) {
 
     function handleSave() {
         const enteredTitle = title.current.value;
-        const enteredDecription = description.current.value;
+        const enteredDescription = description.current.value;
         const enteredDueDate = dueDate.current.value;
-
-        // TODO: Validation
+        
         if (
             enteredTitle.trim() === '' ||
-            enteredDecription.trim() === '' ||
+            enteredDescription.trim() === '' ||
             enteredDueDate.trim() === ''
         ) {
             modalRef.current.open()
@@ -26,7 +25,7 @@ export default function NewProject({ onAdd, onCancel }) {
 
         onAdd({
             title: enteredTitle,
-            desctiption: enteredDecription,
+            description: enteredDescription,
             dueDate: enteredDueDate
         });
     }
