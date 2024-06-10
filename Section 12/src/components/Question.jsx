@@ -14,14 +14,14 @@ export default function Question({
         isCorrect: null
     })
 
-    let timer = 15000;
+    let timer = 10000;
 
     if (answer.selectedAnswer) {
-        timer = 1000;
+        timer = 500;
     }
 
     if (answer.isCorrect !== null) {
-        timer = 2000;
+        timer = 1000;
     }
 
     function handleSelectAnswer (answer) {
@@ -38,8 +38,8 @@ export default function Question({
 
             setTimeout(() => {
                 onSelectAnswer(answer)
-            }, 2000)
-        }, 1000)
+            }, 1000)
+        }, 500)
     }
 
     let answerState = '';
@@ -57,7 +57,7 @@ export default function Question({
                 onTimeout={answer.selectedAnswer === '' ? onSkipAnswer : null}
                 mode={answerState}
             />
-            <h2>{QUESTIONS[idx].text}</h2>
+            <h2>{QUESTIONS[idx]?.text}</h2>
             <Answers
                 answers={QUESTIONS[idx].answers}
                 selectedAnswer={answer.selectedAnswer}
