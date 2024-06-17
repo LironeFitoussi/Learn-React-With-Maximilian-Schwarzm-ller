@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 
 export default function Login() {
+  //! Separate states:
+  // const [ email, setEmail ] = useState("");
+  // const [ password, setPassword ] = useState("");
+  
   const [userForm, setUserForm] = useState({
     email: '',
     password: ''
   });
   
-  //! Separate states:
-  // const [ email, setEmail ] = useState("");
-  // const [ password, setPassword ] = useState("");
+  const emailIsInvalid =
+    userForm.email !== '' &&  !userForm.email.includes('@');
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +22,7 @@ export default function Login() {
       password: userForm.password
     })
 
-    handleInpurReset(e);
+    handleInputReset(e);
   };
 
   function handleInputChange(e) {
@@ -30,7 +33,7 @@ export default function Login() {
     }));
   }
 
-  function handleInpurReset(e) {
+  function handleInputReset(e) {
     e.preventDefault();
     setUserForm({
       email: '',
@@ -64,6 +67,9 @@ export default function Login() {
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
           <input id="email" type="email" name="email" onChange={handleInputChange} value={userForm.email}/>
+          <div className="control-error">
+            {emailIsInvalid && <p>Please enter a valid email address</p>}
+          </div>
         </div>
 
         <div className="control no-margin">
@@ -73,7 +79,7 @@ export default function Login() {
       </div>
 
       <p className="form-actions">
-        <button className="button button-flat" onClick={handleInpurReset}>Reset</button>
+        <button className="button button-flat" onClick={handleInputReset}>Reset</button>
         <button className="button"  onClick={handleSubmit}>Login</button>
       </p>
     </form>
