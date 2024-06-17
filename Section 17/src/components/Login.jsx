@@ -1,57 +1,46 @@
-import { useEffect, useState } from 'react';
+import { useRef } from "react";
 
 export default function Login() {
-  const [userForm, setUserForm] = useState({
-    email: '',
-    password: ''
-  });
-  
-  //! Separate states:
-  // const [ email, setEmail ] = useState("");
-  // const [ password, setPassword ] = useState("");
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log('Submited');
+    const userForm = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value
+    };
+
+    console.log("form:", userForm);
+    handleResetFields(e);
   };
 
-  function handleEmailChange (e) {
-    // console.log(e.target.value); //! Print value before state change sched
-    setEmail(e.target.value)
-  };
-
-  function handlePasswordChange (e) {
-    // console.log(e.target.value); //! Print value before state change sched
-    setPassword(e.target.value)
-  };
-
-  //? Validation to demonstrate user data has changed, (print based on targettet states change dependencies)
-  // useEffect(() => {
-  //   console.log("form:", {
-  //     email: email,
-  //     password: password
-  //   })
-  // }, [email, password])
+  function handleResetFields(e) {
+    e.preventDefault();
+    emailRef.current.value = '';
+    passwordRef.current.value = '';
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
 
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" onChange={handleEmailChange} value={email}/>
+          <input ref={emailRef} id="email" type="email" name="email"/>
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" onChange={handlePasswordChange} value={password}/>
+          <input ref={passwordRef} id="password" type="password" name="password"/>
         </div>
       </div>
 
       <p className="form-actions">
         <button className="button button-flat">Reset</button>
-        <button className="button"  onClick={handleSubmit}>Login</button>
+        <button className="button">Login</button>
       </p>
     </form>
   );
