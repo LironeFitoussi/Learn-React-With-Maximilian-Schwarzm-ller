@@ -21,6 +21,12 @@ export default function Login() {
     e.preventDefault();
     console.log('Submited');
 
+    //? Validation
+    if (emailIsInvalid) {
+      console.error("Invalid email");
+      return;
+    }
+
     console.log("form:", {
       email: userForm.email,
       password: userForm.password

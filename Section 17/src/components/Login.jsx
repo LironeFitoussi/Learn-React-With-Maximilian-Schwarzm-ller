@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Login() {
+  const [emailIsInvalid, setEmailIsInalid] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -12,8 +13,22 @@ export default function Login() {
       password: passwordRef.current.value
     };
 
-    console.log("form:", userForm);
-    handleResetFields(e);
+    const validEmail = userForm.email.includes('@');
+
+    if (!validEmail) {
+      setEmailIsInalid(true);
+      return;
+    }
+    
+    setEmailIsInalid(false);
+
+    // console.log("form:", userForm);
+    console.log('Sending http request...');
+
+    setTimeout(() => {
+      handleResetFields(e);
+      console.log('Logged in!');
+    }, 3000);
   };
 
   function handleResetFields(e) {
@@ -30,6 +45,9 @@ export default function Login() {
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
           <input ref={emailRef} id="email" type="email" name="email"/>
+          <div className="control-error">
+            {emailIsInvalid && <p>Please enter a valid email address</p>}
+          </div>
         </div>
 
         <div className="control no-margin">
