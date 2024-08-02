@@ -214,14 +214,6 @@ h1 {
   border-radius: 4px;
 }
 
-.button-text {
-  font: inherit;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: #ffc404;
-}
-
 .button:hover,
 .button:active {
   background-color: #ffab04;
