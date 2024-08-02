@@ -229,6 +229,21 @@ h1 {
   color: #ffc404;
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+}
+
+.error-block {
+  width: 33%;
+  padding: 0 2rem;
+  border-radius: 10px;
+  background-color: #f9acad;
+  color: #651417;
+  line-height: 0.6;
+}
+
+
 .text-button:hover,
 .text-button:active {
   color: #ffab04;

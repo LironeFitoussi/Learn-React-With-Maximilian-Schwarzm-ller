@@ -1,12 +1,10 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
 import useHttp from "../hooks/useHttp"
-import  MealItem from "./MealItem.jsx"
+import MealItem from "./MealItem.jsx"
+import Error from "./Error.jsx"
 
 const requestConfig = {};
 
 export default function Meals() {
-    // GET request using axios inside useEffect React hook
     const {
         isLoading, 
         error, 
@@ -14,18 +12,14 @@ export default function Meals() {
     } = useHttp("http://localhost:3000/meals", requestConfig, []);
     
     if (isLoading) {
-        return <p >Fetching meals...</p>
+        return <p className="center">Fetching meals...</p>
     }
 
-    // if (error) {
-    //     return <section className="error">{error}</section>
-    // }
+    if (error) {
+        console.log(error);
+        return <Error title="Failed to fetch meals" message={error} />
+    }
 
-    // if (!data) {
-    //     return <section className="error">No data found</section>
-    // }
-    
-    // console.log(fetchedMeals);
     return (
         <ul id="meals">
             {fetchedMeals.map((meal) => <MealItem key={meal.id} meal={meal} />)}
