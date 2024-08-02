@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
+import  MealItem from "./MealItem.jsx"
 export default function Meals() {
     // GET request using axios inside useEffect React hook
     const [fetchedMeals, setFetchedMeals] = useState([])
@@ -23,17 +23,7 @@ export default function Meals() {
 
     return (
         <ul id="meals">
-            {
-                fetchedMeals.map((meals) => {
-                    return (
-                        <li
-                            key={meals.id}
-                        >
-                            <h1>{meals.name}</h1>
-                        </li>
-                    ) 
-                })
-            }
+            {fetchedMeals.map((meal) => <MealItem key={meal.id} meal={meal} />)}
         </ul>
     )
 };        
