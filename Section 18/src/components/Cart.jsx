@@ -10,7 +10,7 @@ export default function Cart() {
     const cartCtx = useContext(CartContex);
     const userProgressCtx = useContext(UserProgressContext);
 
-    console.log(userProgressCtx);
+    // console.log(userProgressCtx);
     const cartTotal = cartCtx.items.reduce((acc, item) => { 
         return acc + item.price * item.quantity
     }, 0)

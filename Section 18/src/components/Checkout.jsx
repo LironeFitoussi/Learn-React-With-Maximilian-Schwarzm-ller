@@ -9,6 +9,7 @@ import Button from "./UI/Button";
 
 // Util
 import { currencyFormatter } from "../util/formatting";
+import axios from "axios";
 
 export default function Checkout() {
     const cartCtx = useContext(CartContext);
@@ -20,13 +21,31 @@ export default function Checkout() {
 
     function handleClose() {
         userProgressCtx.hideCheckout();
-    }
+    };
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const customerData = Object.fromEntries(fd.entries());
+        axios.post("http://localhost:3000/orders", {
+            order: {
+                items: cartCtx.items,
+                customer: customerData
+            },
+        });
+        // console.log({
+        //     order: {
+        //         items: cartCtx.items,
+        //         customer: customerData
+        //     },
+        // });
+    };
 
     return <Modal className="checkout" open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
-        <form action="">
+        <form onSubmit={handleSubmit}>
             <h2>Checkout:</h2>
             <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>  
-            <Input label="Full Name" id="full-name" type="text" required />  
+            <Input label="Full Name" id="name" type="text" required />  
             <Input lable="E-Mail Address" id="email" type="email" required />
             <Input label="Street" id="street" type="text" required />
             <div className="control-row">
