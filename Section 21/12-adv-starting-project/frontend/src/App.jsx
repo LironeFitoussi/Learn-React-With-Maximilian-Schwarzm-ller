@@ -28,7 +28,7 @@ import Root from "./pages/Root.jsx";
 import EventsRoot from "./pages/EventsRoot.jsx";
 // Import Page Components
 import HomePage from "./pages/HomePage.jsx";
-import EventsPage from "./pages/EventsPage.jsx";
+import EventsPage, {loader as pageLoader}  from "./pages/EventsPage.jsx";
 import EventDetailPage from "./pages/EventDetailPage.jsx";
 import NewEventPage from "./pages/NewEventPage.jsx";
 import EditEventPage from "./pages/EditEventPage.jsx";
@@ -45,15 +45,7 @@ function App() {
           path: "events", 
           element: <EventsRoot />, 
           children: [
-            { index: true, element: <EventsPage />, loader: async () => {
-              const response = await fetch('http://localhost:8080/events');
-              if (!response.ok) {
-                /// ...later
-              } else {
-                const resData = await response.json();
-                return resData.events;
-              }
-            } },
+            { index: true, element: <EventsPage />, loader: pageLoader },
             { path: ":id", element: <EventDetailPage /> },
             { path: "new", element: <NewEventPage /> },
             { path: ":id/edit", element: <EditEventPage /> }
