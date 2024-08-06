@@ -5,7 +5,7 @@ import './App.css'
 import Root from "./pages/Root.jsx"
 import Home from './pages/Home.jsx'
 import Products from './pages/Products.jsx'
-
+import ProductDetail from "./pages/ProductDetail.jsx"
 // Error Page
 import Error from './pages/Error.jsx'
 
@@ -18,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/products', element: <Products /> },
+      { path: '/products/:id', element: <ProductDetail /> }
     ]
   }
 ])
