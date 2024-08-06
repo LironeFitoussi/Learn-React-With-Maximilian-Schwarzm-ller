@@ -16,7 +16,16 @@ const loader = async () => {
     /// ...later
   } else {
     const resData = await response.json();
-    return resData.events;
+    // return resData.events;
+    const res = new Response('any data', {
+      status: 200,
+      statusText: 'OK',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    // return res;
+    return response;
   }
 };
 
