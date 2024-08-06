@@ -26,10 +26,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 // Import Roots Layouts Component
 import Root from "./pages/Root.jsx";
 import EventsRoot from "./pages/EventsRoot.jsx";
+
+// Error Page Component
+import ErrorPage from "./pages/ErrorPage.jsx";
+
 // Import Page Components
 import HomePage from "./pages/HomePage.jsx";
 import EventsPage, {loader as pageLoader}  from "./pages/EventsPage.jsx";
-import EventDetailPage from "./pages/EventDetailPage.jsx";
+import EventDetailPage, {loader as eventLoader} from "./pages/EventDetailPage.jsx";
 import NewEventPage from "./pages/NewEventPage.jsx";
 import EditEventPage from "./pages/EditEventPage.jsx";
 
@@ -39,6 +43,7 @@ function App() {
     { 
       path: "/",
       element: <Root />,
+      errorElement: <ErrorPage />,
       children: [
         { index: true, element: <HomePage /> },
         { 
@@ -46,7 +51,7 @@ function App() {
           element: <EventsRoot />, 
           children: [
             { index: true, element: <EventsPage />, loader: pageLoader },
-            { path: ":id", element: <EventDetailPage /> },
+            { path: ":id", element: <EventDetailPage />, loader: eventLoader },
             { path: "new", element: <NewEventPage /> },
             { path: ":id/edit", element: <EditEventPage /> }
           ],
