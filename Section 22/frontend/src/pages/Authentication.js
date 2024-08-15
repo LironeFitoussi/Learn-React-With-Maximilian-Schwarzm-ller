@@ -37,6 +37,12 @@ export async function action({ request }) {
     throw json({ message: "Authentication failed" }, { status: 500 });
   }
 
+  const resData = await response.json();
+  const token = resData.token;
+
+  // Store the token in the local storage
+  localStorage.setItem("token", token);
+
   // soon: manage the token
   return redirect("/");
 }
