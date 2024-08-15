@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Dependency lock files
+yarn.lock
+package-lock.json
+
+# IDE files
+.vscode/
+.idea/
+
+# Compiled files
+*.min.js
+*.min.css
+
+# Cache and temporary files
+.cache/
+.tmp/
+.temp/
