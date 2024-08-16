@@ -14,7 +14,7 @@ export default function FindEventSection() {
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['events', { search: searchTerm }],
-    queryFn: ({ signal }) => fetchEvents({signal, searchTerm}),
+    queryFn: ({ signal, queryKey }) => fetchEvents({signal, ...queryKey[1]}),
     enabled: searchTerm !== undefined,
   });
 
@@ -31,7 +31,11 @@ export default function FindEventSection() {
 
   if (isError) {
     content = (
-      <ErrorBlock title="An error occurred" message={error?.info?.message || 'An error occurred'} />
+      <ErrorBlock
+        title="An error occurred" 
+        message={error?.info?.message || 
+        'An error occurred'} 
+      />
     );
   }
 
