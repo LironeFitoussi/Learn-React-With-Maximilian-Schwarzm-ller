@@ -4,7 +4,8 @@ import {
   createBrowserRouter,
 } from 'react-router-dom';
 
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { QueryClientProvider,  } from '@tanstack/react-query';
+import { queryClient } from './util/http.js';
 
 import Events from './components/Events/Events.jsx';
 import EventDetails from './components/Events/EventDetails.jsx';
@@ -40,7 +41,6 @@ const router = createBrowserRouter([
 ]);
 
 // Create a new QueryClient instance, this will be used to provide the query cache to the QueryClientProvider
-const queryClient = new QueryClient();
 
 function App() {
   return (

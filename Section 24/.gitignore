@@ -15,9 +15,9 @@ build/
 .idea/
 
 # Ignore compiled assets
-*.css
-*.js
-*.map
+# *.css
+# *.js
+# *.map
 
 # Ignore package-lock.json for npm
 package-lock.json

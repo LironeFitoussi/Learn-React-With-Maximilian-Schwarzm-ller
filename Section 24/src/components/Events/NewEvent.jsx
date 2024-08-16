@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 // Tanstack Imports
 // useMutation is used to perform a mutation and update the cache
 import { useMutation } from '@tanstack/react-query';
+import { queryClient } from '../../util/http.js';
 
 // Component Imports
 import Modal from '../UI/Modal.jsx';
@@ -18,6 +19,10 @@ export default function NewEvent() {
   // Create a new mutation
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: createNewEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['events'] });
+      navigate('/events');
+    }
   });
 
   function handleSubmit(formData) {
