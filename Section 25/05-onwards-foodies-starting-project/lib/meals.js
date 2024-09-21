@@ -4,6 +4,9 @@ const db = sql('meals.db');
 
 export async  function getMeals() {
     // emulate a slow network request
-    // await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 2500));
+
+    // Emulate an error
+    // throw new Error('Failed to fetch meals');
     return db.prepare('SELECT * FROM meals').all();
 }
