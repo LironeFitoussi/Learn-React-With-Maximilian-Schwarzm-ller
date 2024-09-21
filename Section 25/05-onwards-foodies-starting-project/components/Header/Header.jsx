@@ -8,9 +8,14 @@ import Image from 'next/image';
 // Assets
 import logoImg from '@/assets/logo.png';
 
+// Custom Components
+import NavLink from './NavLink';
 const Header = () => {
-    console.log(classes);
-    
+    const links = [
+        { href: '/meals', text: 'Browse Meals' },
+        { href: '/comunity', text: 'Foodies Community' },
+    ];
+
     return (
         <header className={classes.header}>
             <Link className={classes.logo} href='/' >
@@ -19,12 +24,11 @@ const Header = () => {
             </Link>
             <nav className={classes.nav}>
                 <ul>
-                    <li>
-                        <Link href='/meals'>Browse Meals</Link>
-                    </li>
-                    <li>
-                        <Link href='/comunity'>Foodies Community</Link>
-                    </li>
+                    {links.map((link, index) => (
+                        <li key={index}>
+                            <NavLink href={link.href}>{link.text}</NavLink>
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </header>
