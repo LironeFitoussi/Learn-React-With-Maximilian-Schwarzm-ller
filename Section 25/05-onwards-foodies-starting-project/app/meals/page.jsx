@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import classes from './page.module.css';
 
+// Custom Components
+import MealsGrid from '@/components/Meals/MealsGrid';
 const MealsPage = () => {
     return (
         <>
@@ -20,7 +22,7 @@ const MealsPage = () => {
                 </p>
             </header>
             <main className={classes.main}>
-                
+                <MealsGrid meals={[]} />
             </main>
         </>
     );

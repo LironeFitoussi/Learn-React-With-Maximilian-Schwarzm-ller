@@ -10,11 +10,7 @@ export default function MealsGrid({ meals}) {
             {meals.map((meal) => (
                 <li key={meal.id}>
                     <MealItem
-                        title={meal.title}
-                        image={meal.image}
-                        creator={meal.creator}
-                        summary={meal.summary}
-                        slug={meal.slug}
+                        {...meal}
                     />
                 </li>
             ))}
