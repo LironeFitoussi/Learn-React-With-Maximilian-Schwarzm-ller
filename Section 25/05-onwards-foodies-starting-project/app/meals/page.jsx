@@ -4,7 +4,12 @@ import classes from './page.module.css';
 
 // Custom Components
 import MealsGrid from '@/components/Meals/MealsGrid';
-const MealsPage = () => {
+
+// DB Functions
+import { getMeals } from '@/lib/meals.js';
+
+const MealsPage = async () => {
+    const meals = await getMeals();     
     return (
         <>
             <header className={classes.header}>
@@ -22,7 +27,7 @@ const MealsPage = () => {
                 </p>
             </header>
             <main className={classes.main}>
-                <MealsGrid meals={[]} />
+                <MealsGrid meals={meals} />
             </main>
         </>
     );
