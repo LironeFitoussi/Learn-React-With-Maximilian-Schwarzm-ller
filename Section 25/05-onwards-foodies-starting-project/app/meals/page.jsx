@@ -1,11 +1,28 @@
-import React from 'react';
+// Styles
+import Link from 'next/link';
+import classes from './page.module.css';
 
 const MealsPage = () => {
     return (
-        <div>
-            <h1>Meals Page</h1>
-            <p>Welcome to the Meals Page!</p>
-        </div>
+        <>
+            <header className={classes.header}>
+                <h1>
+                    Delicious Meals, created{' '}
+                    <span className={classes.highlight}>by you</span>
+                </h1>
+                <p>
+                  Choose your favorite recipe and cook it yourself, It is easy and fun!  
+                </p>
+                <p className={classes.cta}>
+                    <Link href='/meals/new'>
+                        Share Your Favorite Recipe
+                    </Link>
+                </p>
+            </header>
+            <main className={classes.main}>
+                
+            </main>
+        </>
     );
 };
 
