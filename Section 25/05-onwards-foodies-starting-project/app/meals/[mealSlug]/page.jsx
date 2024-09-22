@@ -21,7 +21,11 @@ const MealPage = async ({ params: { mealSlug }}) => {
         <>
             <header className={classes.header}>
                 <div className={classes.image}>
-                    <Image src={meal.image} fill/>
+                <Image
+  src={`https://bucket-lf-nextjs-demo.s3.eu-north-1.amazonaws.com/${meal.image}`}
+  alt={title}
+  fill
+/>
                 </div>
                 <div className={classes.headerText}>
                     <h1>{meal.title}</h1>
