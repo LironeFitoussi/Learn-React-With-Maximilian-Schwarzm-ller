@@ -6,7 +6,7 @@ import classes from './page.module.css';
 import { Suspense } from 'react';
 
 // Custom Components
-import MealsGrid from '@/components/Meals/MealsGrid';
+import MealsGrid from '@/components/meals/MealsGrid';
 
 // DB Functions
 import { getMeals } from '@/lib/meals.js';
