@@ -280,12 +280,12 @@ main {
   display: inline-block;
   font-size: 0.85rem;
   margin-left: 0.25rem;
-  transition: transform 0.3s ease-out;
+  /* transition: transform 0.3s ease-out; */
 }
 
-.challenge-item-details.expanded .challenge-item-details-icon {
+/* .challenge-item-details.expanded .challenge-item-details-icon {
   transform: rotate(180deg);
-}
+} */
 
 .challenge-item-description {
   margin: 0;
@@ -314,10 +314,10 @@ main {
   width: 30rem;
   max-width: 90%;
   z-index: 10;
-  animation: slide-up-fade-in 0.5s ease-out;
+  /* animation: slide-up-fade-in 0.5s ease-out; */
 }
 
-@keyframes slide-up-fade-in {
+/* @keyframes slide-up-fade-in {
   from {
     transform: translateY(100px);
     opacity: 0;
@@ -326,7 +326,7 @@ main {
     transform: translateY(0);
     opacity: 1;
   }
-}
+} */
 
 /* Impossible to animate the modal closing with the backdrop */
 /* @keyframes slide-down-fade-out {
