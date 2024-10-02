@@ -50,6 +50,8 @@ let people: {
 // Type Inference
 // -------------
 
-let course = 'React - The Complete Guide'; // string
+let course: string | number = 'React - The Complete Guide'; // string
+// course = 1234; // wrong because it's a string\
 
-// course = 1234; // wrong because it's a string
+let course2: string = 'React - The Complete Guide'; // string or number
+// course2 = 1234; // allowed because of the type inference
