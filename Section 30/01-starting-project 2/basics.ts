@@ -45,3 +45,11 @@ let people: {
     name: string;
     age: number;
 }[]; // Array of objects
+
+// -------------
+// Type Inference
+// -------------
+
+let course = 'React - The Complete Guide'; // string
+
+// course = 1234; // wrong because it's a string
