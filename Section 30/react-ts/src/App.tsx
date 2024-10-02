@@ -25,14 +25,14 @@ function App() {
   }
   return (
     <>
-      <a href="https://react.dev" target="_blank">
+      {/* <a href="https://react.dev" target="_blank">
         <img src={reactLogo} className="logo react" alt="React logo" />
       </a>
       <h1>Vite + TS + React</h1>
-      <div>
+      <div> */}
         <NewTodo onAddTodo={addTodoHandler} />
         <Todos items={todos} />
-      </div>
+      {/* </div> */}
     </>
   )
 }
