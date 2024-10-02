@@ -67,3 +67,15 @@ type Person = {
 
 let person2: Person; // object
 let people2: Person[]; // Array of objects
+
+// -------------
+// Functions & Function Types
+// -------------
+
+function add(a: number, b: number){
+    return a + b;
+}
+
+function print(value: any){
+    console.log(value);
+}
