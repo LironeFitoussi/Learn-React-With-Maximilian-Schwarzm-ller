@@ -23,6 +23,13 @@ function App() {
       return [...prevTodos, newTodo];
     });
   }
+
+  function removeTodoHandler(todoId: string) {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== todoId);
+    });
+  }
+
   return (
     <>
       {/* <a href="https://react.dev" target="_blank">
@@ -31,7 +38,7 @@ function App() {
       <h1>Vite + TS + React</h1>
       <div> */}
         <NewTodo onAddTodo={addTodoHandler} />
-        <Todos items={todos} />
+        <Todos items={todos} removeTodo={removeTodoHandler}/>
       {/* </div> */}
     </>
   )
