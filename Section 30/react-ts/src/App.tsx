@@ -1,7 +1,12 @@
 import reactLogo from './assets/react.svg'
 import './App.css'
-import Todos from './components/Todos'
+
+// Classes
 import Todo from './models/todo'
+
+// Components
+import Todos from './components/Todos'
+import NewTodo from './components/NewTodo'
 
 function App() {
   const todos = [
@@ -10,6 +15,10 @@ function App() {
     new Todo('Learn Vite'),
   ];
 
+  function addTodoHandler(text: string) {
+    const newTodo = new Todo(text);
+    todos.push(newTodo);
+  }
   return (
     <>
       <a href="https://react.dev" target="_blank">
@@ -17,6 +26,7 @@ function App() {
       </a>
       <h1>Vite + TS + React</h1>
       <div>
+        <NewTodo onAddTodo={addTodoHandler} />
         <Todos items={todos} />
       </div>
     </>
