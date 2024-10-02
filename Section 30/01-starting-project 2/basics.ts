@@ -50,8 +50,20 @@ let people: {
 // Type Inference
 // -------------
 
-let course: string | number = 'React - The Complete Guide'; // string
-// course = 1234; // wrong because it's a string\
+let course: string = 'React - The Complete Guide'; // string
+// course = 1234; // wrong because it's a string
 
-let course2: string = 'React - The Complete Guide'; // string or number
-// course2 = 1234; // allowed because of the type inference
+let course2: string | number  = 'React - The Complete Guide'; // string or number
+// course2 = 1234; // allowed because of the union type
+
+// -------------
+// Types
+// -------------
+
+type Person = {
+    name: string;
+    age: number;
+};
+
+let person2: Person; // object
+let people2: Person[]; // Array of objects
