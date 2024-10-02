@@ -10,7 +10,7 @@ function App() {
       </a>
       <h1>Vite + TS + React</h1>
       <div>
-        <Todos />
+        <Todos items={['Learn React', 'Learn TypeScript', 'Learn Vite']} />
       </div>
     </>
   )
