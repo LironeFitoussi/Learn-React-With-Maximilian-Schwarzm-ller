@@ -1,46 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
-
-// Classes
-import Todo from './models/todo'
 
 // Components
 import Todos from './components/Todos'
 import NewTodo from './components/NewTodo'
+import TodosContextProvider from './store/todos-context'
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  // const todos = [
-  //   new Todo('Learn React'),
-  //   new Todo('Learn TypeScript'),
-  //   new Todo('Learn Vite'),
-  // ];
-
-  function addTodoHandler(text: string) {
-    const newTodo = new Todo(text);
-    setTodos((prevTodos) => {
-      return [...prevTodos, newTodo];
-    });
-  }
-
-  function removeTodoHandler(todoId: string) {
-    setTodos((prevTodos) => {
-      return prevTodos.filter(todo => todo.id !== todoId);
-    });
-  }
-
   return (
-    <>
-      {/* <a href="https://react.dev" target="_blank">
-        <img src={reactLogo} className="logo react" alt="React logo" />
-      </a>
-      <h1>Vite + TS + React</h1>
-      <div> */}
-        <NewTodo onAddTodo={addTodoHandler} />
-        <Todos items={todos} removeTodo={removeTodoHandler}/>
-      {/* </div> */}
-    </>
+    <TodosContextProvider>
+      <NewTodo />
+      <Todos />
+    </TodosContextProvider>
   )
 }
 
