@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
@@ -9,15 +10,18 @@ import Todos from './components/Todos'
 import NewTodo from './components/NewTodo'
 
 function App() {
-  const todos = [
-    new Todo('Learn React'),
-    new Todo('Learn TypeScript'),
-    new Todo('Learn Vite'),
-  ];
+  const [todos, setTodos] = useState<Todo[]>([]);
+  // const todos = [
+  //   new Todo('Learn React'),
+  //   new Todo('Learn TypeScript'),
+  //   new Todo('Learn Vite'),
+  // ];
 
   function addTodoHandler(text: string) {
     const newTodo = new Todo(text);
-    todos.push(newTodo);
+    setTodos((prevTodos) => {
+      return [...prevTodos, newTodo];
+    });
   }
   return (
     <>

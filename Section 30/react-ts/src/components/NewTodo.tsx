@@ -13,6 +13,9 @@ const NewTodo: React.FC<{onAddTodo: (text: string) => void}> = (props) => {
         }
 
         props.onAddTodo(enteredText)
+
+        // Clear the input field
+        todoTextInputRef.current!.value = '';
     };
 
     return (
