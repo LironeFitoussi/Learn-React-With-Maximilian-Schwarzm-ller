@@ -72,10 +72,28 @@ let people2: Person[]; // Array of objects
 // Functions & Function Types
 // -------------
 
-function add(a: number, b: number){
-    return a + b;
-}
+// function add(a: number, b: number){
+//     return a + b;
+// }
 
 function print(value: any){
     console.log(value);
 }
+
+
+// -------------
+// Generics
+// -------------
+
+function insertAtBeginning<T>(array: T[], value: T){
+    const newArray = [value, ...array];
+    return newArray;
+}
+
+const demoArray = [1, 2, 3];
+
+const updatedArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
+// updatedArray[0].split(''); // Error because it's a number
+
+const stringArray = insertAtBeginning(['a', 'b', 'c'], '5'); // ['z', 'a', 'b', 'c']
+// stringArray[0].toFixed(); // Error because it's a string
